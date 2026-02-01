@@ -180,11 +180,8 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
 function moveNo() {
-  const container = document.querySelector(".choice-container");
-  const containerRect = container.getBoundingClientRect();
-
-  const maxX = container.clientWidth - noBtn.offsetWidth;
-  const maxY = container.clientHeight - noBtn.offsetHeight;
+  const maxX = window.innerWidth - noBtn.offsetWidth;
+  const maxY = window.innerHeight - noBtn.offsetHeight;
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
@@ -194,8 +191,8 @@ function moveNo() {
   noBtn.style.top = `${y}px`;
 }
 
-noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); });
+noBtn.addEventListener("mouseenter", moveNo); // Desktop
+noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); }); // Mobile
 
 yesBtn.addEventListener("click", () => {
   choiceBox.classList.add("fade-out");
@@ -243,17 +240,18 @@ function startGame() {
   heartInterval = setInterval(spawnHeart, 700);
 }
 
-/* ===== CONFETTI ===== */
+/* ===== EXCITING CONFETTI ===== */
 function confetti() {
-  const colors = ["#ff4d6d", "#ff9ad3", "#f8b195", "#fcd1d1", "#ffe3ec"];
-  for (let i = 0; i < 200; i++) {
+  const colors = ["#ff4d6d", "#ff9ad3", "#f8b195", "#fcd1d1", "#ffe3ec", "#ff8f8f", "#ff6b81", "#f7d1c5"];
+  for (let i = 0; i < 500; i++) { // Increased number of confetti pieces
     const conf = document.createElement("div");
+    const size = Math.random() * 15 + 5; // Larger confetti pieces
     conf.style.position = "absolute";
-    conf.style.width = conf.style.height = `${5 + Math.random() * 8}px`;
+    conf.style.width = conf.style.height = `${size}px`;
     conf.style.background = colors[Math.floor(Math.random() * colors.length)];
-    conf.style.top = "0px";
+    conf.style.top = `${Math.random() * window.innerHeight}px`;
     conf.style.left = `${Math.random() * window.innerWidth}px`;
-    conf.style.opacity = Math.random() + 0.5;
+    conf.style.opacity = Math.random() * 0.7 + 0.3;
     conf.style.borderRadius = "50%";
     conf.style.pointerEvents = "none";
     conf.style.transform = `rotate(${Math.random() * 360}deg)`;
@@ -264,7 +262,7 @@ function confetti() {
       { transform: `translateY(0px) rotate(0deg)` },
       { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random() * 720}deg)` }
     ], {
-      duration: 2500 + Math.random() * 1000,
+      duration: 3500 + Math.random() * 1500,
       easing: "ease-out",
       fill: "forwards"
     });
