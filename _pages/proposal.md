@@ -102,13 +102,34 @@ nav: false
 const noBtn = document.getElementById("no-btn");
 const area = document.getElementById("area");
 
-let activated = false;
+let gameStarted = false;
+
+area.addEventListener("mousemove", (e) => {
+  if (!gameStarted) return;
+
+  const btnRect = noBtn.getBoundingClientRect();
+  const areaRect = area.getBoundingClientRect();
+
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+
+  const btnCenterX = btnRect.left + btnRect.width / 2;
+  const btnCenterY = btnRect.top + btnRect.height / 2;
+
+  const distance = Math.hypot(mouseX - btnCenterX, mouseY - btnCenterY);
+
+  // If mouse gets close, run 😈
+  if (distance < 80) {
+    moveNoButton();
+  }
+});
 
 noBtn.addEventListener("mouseenter", () => {
-  if (!activated) {
-    activated = true; // first hover triggers movement
-  }
+  gameStarted = true;
+  moveNoButton();
+});
 
+function moveNoButton() {
   const areaRect = area.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
 
@@ -120,9 +141,10 @@ noBtn.addEventListener("mouseenter", () => {
 
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
-});
+}
 
 function sayYes() {
-  window.location.href = "{{ '/proposal/yes/' | relative_url }}";
+  window.location.href = "{{ '/proposal/game/' | relative_url }}";
 }
 </script>
+
