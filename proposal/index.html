@@ -50,7 +50,7 @@ yesBtn.addEventListener("click", () => {
 });
 
 /* ===== GAME ===== */
-const HEARTS_TO_WIN = 5;
+const HEARTS_TO_WIN = 10;
 let caught=0;
 const gameBox = document.getElementById("gameBox");
 const counter = document.getElementById("counter");
@@ -61,7 +61,7 @@ function spawnHeart(){
   heart.style.left=Math.random()*85+"%";
   heart.style.bottom="-30px";
   gameBox.appendChild(heart);
-  heart.animate([{transform:"translateY(0)"},{transform:"translateY(-600px)"}],{duration:4500});
+  heart.animate([{transform:"translateY(0)"},{transform: `translateY(-${520 + Math.random() * 120}px)` },{duration: 4200 + Math.random() * 800 });
   heart.onclick=()=>{ heart.remove(); caught++; counter.textContent=`${caught} / ${HEARTS_TO_WIN}`; if(caught>=HEARTS_TO_WIN) finishGame(); };
   setTimeout(()=>heart.remove(),5000);
 }
@@ -75,19 +75,37 @@ function startGame(){
 }
 
 /* ===== CONFETTI ===== */
-function confetti(){
-  for(let i=0;i<120;i++){
-    const c=document.createElement("div");
-    c.style.position="absolute";
-    c.style.width="8px"; c.style.height="8px";
-    c.style.background=["#ff4d6d","#ff9ad3","#f8b195"][Math.floor(Math.random()*3)];
-    c.style.top="50%"; c.style.left="50%";
-    c.style.transform=`rotate(${Math.random()*360}deg)`;
-    c.style.animation="fly 1.8s ease-out forwards";
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),1800);
+function confetti() {
+  const colors = ["#ff4d6d","#ff9ad3","#f8b195","#fcd1d1","#ffe3ec"];
+  for (let i = 0; i < 200; i++) {
+    const conf = document.createElement("div");
+    conf.style.position = "absolute";
+    conf.style.width = conf.style.height = `${5 + Math.random() * 8}px`;
+    conf.style.background = colors[Math.floor(Math.random() * colors.length)];
+    conf.style.top = "0px";
+    conf.style.left = `${Math.random() * window.innerWidth}px`;
+    conf.style.opacity = Math.random() + 0.5;
+    conf.style.borderRadius = "50%";
+    conf.style.pointerEvents = "none";
+    conf.style.transform = `rotate(${Math.random()*360}deg)`;
+
+    document.body.appendChild(conf);
+
+    // animate falling
+    const fall = conf.animate([
+      { transform: `translateY(0px) rotate(0deg)` },
+      { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random()*720}deg)` }
+    ], {
+      duration: 2500 + Math.random() * 1000,
+      easing: "ease-out",
+      fill: "forwards"
+    });
+
+    // remove after animation
+    fall.onfinish = () => conf.remove();
   }
 }
+
 
 /* ===== FINISH GAME ===== */
 const loveBox = document.getElementById("loveBox");
