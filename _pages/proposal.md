@@ -172,11 +172,13 @@ noBtn.addEventListener("mouseenter", moveNo); // desktop
 noBtn.addEventListener("touchstart", e => { e.preventDefault(); moveNo(); }); // mobile
 
 yesBtn.addEventListener("click", () => {
+  // Add fade-out animation for the choice box
   choiceBox.classList.add("fade-out");
+  // Wait for the animation to finish, then hide choiceBox and start the game
   setTimeout(()=>{
     choiceBox.classList.add("hidden");
     startGame();
-  }, 1000);
+  }, 1000); // Match the fade-out duration here
 });
 
 /* ===== GAME ===== */
@@ -184,6 +186,7 @@ const HEARTS_TO_WIN = 10;
 let caught=0;
 const gameBox = document.getElementById("gameBox");
 const counter = document.getElementById("counter");
+
 function spawnHeart(){
   const heart=document.createElement("div");
   heart.className="heart";
@@ -195,6 +198,7 @@ function spawnHeart(){
   heart.onclick=()=>{ heart.remove(); caught++; counter.textContent=`${caught} / ${HEARTS_TO_WIN}`; if(caught>=HEARTS_TO_WIN) finishGame(); };
   setTimeout(()=>heart.remove(),5000);
 }
+
 let heartInterval;
 function startGame(){
   gameBox.classList.remove("hidden");
@@ -236,7 +240,6 @@ function confetti() {
   }
 }
 
-
 /* ===== FINISH GAME ===== */
 const loveBox = document.getElementById("loveBox");
 function finishGame(){
@@ -269,3 +272,4 @@ function startSlideshow(){
 <style>
 @keyframes fly { to{ transform: translate(300px,-500px); opacity:0;} }
 </style>
+
