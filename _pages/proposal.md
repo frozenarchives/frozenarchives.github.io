@@ -6,7 +6,16 @@ nav: false
 ---
 
 <style>
-/* --- Page setup --- */
+/* --- General Styles --- */
+body {
+  background: linear-gradient(45deg, #ff8f8f, #ff4d6d);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* --- Page Setup --- */
 .page {
   min-height: 90vh;
   display: flex;
@@ -31,8 +40,8 @@ canvas {
   text-align: center;
   position: relative;
   z-index: 1;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
-  background: rgba(255,255,255,0.9); /* white overlay with transparency */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.9); /* white overlay with transparency */
   backdrop-filter: blur(10px); /* optional: blur background for better contrast */
 }
 
@@ -43,7 +52,7 @@ canvas {
 @keyframes fadeIn { from {opacity:0; transform:scale(0.97);} to{opacity:1; transform:scale(1);} }
 @keyframes fadeOut{ to {opacity:0; transform:scale(0.97);} }
 
-/* --- Choice Buttons --- */
+/* --- Button Styles --- */
 .choice-container {
   display: flex;
   justify-content: center;
@@ -58,13 +67,15 @@ canvas {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  z-index: 2; /* Ensure buttons are above other elements */
+  z-index: 2;
 }
-#yesBtn { background:#ff5d8f; color:white; }
-#noBtn { background:#ccc; }
+#yesBtn { background: #ff5d8f; color: white; }
+#yesBtn:hover { transform: scale(1.1); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
+#noBtn { background: #ccc; }
+#noBtn:hover { transform: scale(1.1); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
 
-/* --- Game hearts --- */
-.heart { position:absolute; font-size:32px; cursor:pointer; }
+/* --- Heart Game --- */
+.heart { position: absolute; font-size: 32px; cursor: pointer; }
 
 /* --- Slideshow --- */
 .slideshow {
@@ -85,9 +96,10 @@ canvas {
   opacity: 0;
   transition: opacity 1.5s ease;
 }
-.slideshow img.active { opacity:1; }
+.slideshow img.active { opacity: 1; }
 
-@media(max-width:600px) { .slideshow{height:250px;} }
+@media(max-width:600px) { .slideshow { height: 250px; } }
+
 </style>
 
 <div class="page">
@@ -135,7 +147,7 @@ canvas {
 /* ===== MUSIC ===== */
 const music = document.getElementById("music");
 music.play().catch(() => {
-  document.body.addEventListener("click", () => music.play(), { once:true });
+  document.body.addEventListener("click", () => music.play(), { once: true });
 });
 
 /* ===== PARTICLES ===== */
@@ -185,10 +197,13 @@ function moveNo() {
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
+  const angle = Math.random() * 2 * Math.PI;
 
-  noBtn.style.position = "absolute";
-  noBtn.style.left = `${x}px`;
-  noBtn.style.top = `${y}px`;
+  const xMovement = Math.cos(angle) * 200;
+  const yMovement = Math.sin(angle) * 200;
+
+  noBtn.style.transition = "transform 0.4s ease-in-out";
+  noBtn.style.transform = `translate(${x + xMovement}px, ${y + yMovement}px)`;
 }
 
 noBtn.addEventListener("mouseenter", moveNo); // Desktop
@@ -232,6 +247,7 @@ function spawnHeart() {
 }
 
 let heartInterval;
+
 function startGame() {
   gameBox.classList.remove("hidden");
   gameBox.classList.add("fade-in");
@@ -240,12 +256,12 @@ function startGame() {
   heartInterval = setInterval(spawnHeart, 700);
 }
 
-/* ===== EXCITING CONFETTI ===== */
+/* ===== CONFETTI ===== */
 function confetti() {
-  const colors = ["#ff4d6d", "#ff9ad3", "#f8b195", "#fcd1d1", "#ffe3ec", "#ff8f8f", "#ff6b81", "#f7d1c5"];
-  for (let i = 0; i < 500; i++) { // Increased number of confetti pieces
+  const colors = ["#ff4d6d", "#ff9ad3", "#f8b195", "#fcd1d1", "#ffe3ec"];
+  for (let i = 0; i < 500; i++) {
     const conf = document.createElement("div");
-    const size = Math.random() * 15 + 5; // Larger confetti pieces
+    const size = Math.random() * 15 + 5;
     conf.style.position = "absolute";
     conf.style.width = conf.style.height = `${size}px`;
     conf.style.background = colors[Math.floor(Math.random() * colors.length)];
