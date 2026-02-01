@@ -1,41 +1,42 @@
 ---
 layout: default
 permalink: /proposal/yes/
-title: Yes 💖
+title: Always You ❤️
 nav: false
 ---
 
 <style>
-.yes-container {
-  min-height: 80vh;
+.yes-wrapper {
+  min-height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-  border-radius: 25px;
-  padding: 40px;
+}
+
+.yes-box {
+  max-width: 750px;
+  padding: 70px 60px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff758f, #ff7eb3);
   color: white;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
 }
 
-.yes-message {
-  max-width: 700px;
+.yes-box h1 {
+  font-size: 48px;
+  margin-bottom: 25px;
 }
 
-.yes-message h1 {
-  font-size: 52px;
-  margin-bottom: 20px;
-}
-
-.yes-message p {
+.yes-box p {
   font-size: 22px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .heart {
-  font-size: 70px;
-  margin-bottom: 20px;
-  animation: pulse 1.5s infinite;
+  font-size: 72px;
+  margin-bottom: 25px;
+  animation: pulse 1.6s infinite;
 }
 
 @keyframes pulse {
@@ -45,14 +46,18 @@ nav: false
 }
 </style>
 
-<div class="yes-container">
-  <div class="yes-message">
+<div class="yes-wrapper">
+  <div class="yes-box">
     <div class="heart">❤️</div>
-    <h1>You said YES!</h1>
+    <h1>You chose us.</h1>
     <p>
-      Diana, thank you for choosing me.  
-      You make my days brighter, my heart lighter, and my life better.  
-      I’m so lucky to call you my Valentine — today and always 💕
+      Diana, this might look like a simple page,  
+      but it holds something very real for me.
+      <br><br>
+      Thank you for being my Valentine —
+      for choosing love, laughter, and a future together.
+      <br><br>
+      I’m so grateful for you. Always.
     </p>
   </div>
 </div>
