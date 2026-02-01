@@ -32,8 +32,10 @@ canvas {
   position: relative;
   z-index: 1;
   box-shadow: 0 30px 60px rgba(0,0,0,0.25);
-  background: linear-gradient(135deg, #ffe3ec, #f9c5d1);
+  background: rgba(255,255,255,0.9); /* white overlay with transparency */
+  backdrop-filter: blur(10px); /* optional: blur background for better contrast */
 }
+
 
 .hidden { display: none; }
 .fade-in { animation: fadeIn 1.4s ease forwards; }
@@ -151,12 +153,22 @@ const noBtn = document.getElementById("noBtn");
 
 function moveNo() {
   const container = document.querySelector(".choice-container");
-  const w = container.offsetWidth - noBtn.offsetWidth;
-  const h = container.offsetHeight - noBtn.offsetHeight;
-  const x = Math.random() * w;
-  const y = Math.random() * h;
-  noBtn.style.transform = `translate(${x}px,${y}px)`;
+  const containerRect = container.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
+
+  // maximum X/Y so the button stays inside the container
+  const maxX = container.clientWidth - noBtn.offsetWidth;
+  const maxY = container.clientHeight - noBtn.offsetHeight;
+
+  // random positions anywhere in container
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.position = "absolute";
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
 }
+
 noBtn.addEventListener("mouseenter", moveNo); // desktop
 noBtn.addEventListener("touchstart", e=>{ e.preventDefault(); moveNo(); }); // mobile
 
