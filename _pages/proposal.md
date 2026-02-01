@@ -141,10 +141,38 @@ music.play().catch(() => {
 /* ===== PARTICLES ===== */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
-function resize(){ canvas.width=innerWidth; canvas.height=innerHeight; }
-resize(); addEventListener("resize",resize);
-const particles = Array.from({length:60},()=>({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.3, dy:(Math.random()-0.5)*0.3}));
-(function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle="rgba(255,255,255,0.5)";ctx.fill();p.x+=p.dx;p.y+=p.dy;if(p.x<0||p.x>canvas.width)p.dx*=-1;if(p.y<0||p.y>canvas.height)p.dy*=-1; }); requestAnimationFrame(draw); })();
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+const particles = Array.from({ length: 60 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  r: Math.random() * 2 + 1,
+  dx: (Math.random() - 0.5) * 0.3,
+  dy: (Math.random() - 0.5) * 0.3,
+}));
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach((p) => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+  requestAnimationFrame(drawParticles);
+}
+
+drawParticles();
 
 /* ===== CHOICE BUTTONS ===== */
 const choiceBox = document.getElementById("choiceBox");
@@ -155,11 +183,9 @@ function moveNo() {
   const container = document.querySelector(".choice-container");
   const containerRect = container.getBoundingClientRect();
 
-  // maximum X/Y so the button stays inside the container
   const maxX = container.clientWidth - noBtn.offsetWidth;
   const maxY = container.clientHeight - noBtn.offsetHeight;
 
-  // random positions anywhere in container
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
 
@@ -168,49 +194,58 @@ function moveNo() {
   noBtn.style.top = `${y}px`;
 }
 
-noBtn.addEventListener("mouseenter", moveNo); // desktop
-noBtn.addEventListener("touchstart", e => { e.preventDefault(); moveNo(); }); // mobile
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); });
 
 yesBtn.addEventListener("click", () => {
-  // Add fade-out animation for the choice box
   choiceBox.classList.add("fade-out");
-  // Wait for the animation to finish, then hide choiceBox and start the game
-  setTimeout(()=>{
+  setTimeout(() => {
     choiceBox.classList.add("hidden");
     startGame();
-  }, 1000); // Match the fade-out duration here
+  }, 1000);
 });
 
 /* ===== GAME ===== */
-const HEARTS_TO_WIN = 10;
-let caught=0;
+const HEARTS_TO_WIN = 5;
+let caught = 0;
 const gameBox = document.getElementById("gameBox");
 const counter = document.getElementById("counter");
 
-function spawnHeart(){
-  const heart=document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="❤️";
-  heart.style.left=Math.random()*85+"%";
-  heart.style.bottom="-30px";
+function spawnHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 85 + "%";
+  heart.style.bottom = "-30px";
   gameBox.appendChild(heart);
-  heart.animate([{transform:"translateY(0)"},{transform: `translateY(-${520 + Math.random() * 120}px)` },{duration: 4200 + Math.random() * 800 });
-  heart.onclick=()=>{ heart.remove(); caught++; counter.textContent=`${caught} / ${HEARTS_TO_WIN}`; if(caught>=HEARTS_TO_WIN) finishGame(); };
-  setTimeout(()=>heart.remove(),5000);
+
+  heart.animate([
+    { transform: "translateY(0)" },
+    { transform: `translateY(-${520 + Math.random() * 120}px)` }
+  ], { duration: 4200 + Math.random() * 800 });
+
+  heart.onclick = () => {
+    heart.remove();
+    caught++;
+    counter.textContent = `${caught} / ${HEARTS_TO_WIN}`;
+    if (caught >= HEARTS_TO_WIN) finishGame();
+  };
+
+  setTimeout(() => heart.remove(), 5000);
 }
 
 let heartInterval;
-function startGame(){
+function startGame() {
   gameBox.classList.remove("hidden");
   gameBox.classList.add("fade-in");
-  counter.textContent=`0 / ${HEARTS_TO_WIN}`;
-  caught=0;
-  heartInterval=setInterval(spawnHeart,700);
+  counter.textContent = `0 / ${HEARTS_TO_WIN}`;
+  caught = 0;
+  heartInterval = setInterval(spawnHeart, 700);
 }
 
 /* ===== CONFETTI ===== */
 function confetti() {
-  const colors = ["#ff4d6d","#ff9ad3","#f8b195","#fcd1d1","#ffe3ec"];
+  const colors = ["#ff4d6d", "#ff9ad3", "#f8b195", "#fcd1d1", "#ffe3ec"];
   for (let i = 0; i < 200; i++) {
     const conf = document.createElement("div");
     conf.style.position = "absolute";
@@ -221,55 +256,49 @@ function confetti() {
     conf.style.opacity = Math.random() + 0.5;
     conf.style.borderRadius = "50%";
     conf.style.pointerEvents = "none";
-    conf.style.transform = `rotate(${Math.random()*360}deg)`;
+    conf.style.transform = `rotate(${Math.random() * 360}deg)`;
 
     document.body.appendChild(conf);
 
-    // animate falling
     const fall = conf.animate([
       { transform: `translateY(0px) rotate(0deg)` },
-      { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random()*720}deg)` }
+      { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random() * 720}deg)` }
     ], {
       duration: 2500 + Math.random() * 1000,
       easing: "ease-out",
       fill: "forwards"
     });
 
-    // remove after animation
     fall.onfinish = () => conf.remove();
   }
 }
 
 /* ===== FINISH GAME ===== */
 const loveBox = document.getElementById("loveBox");
-function finishGame(){
+
+function finishGame() {
   clearInterval(heartInterval);
   confetti();
   gameBox.classList.add("fade-out");
-  setTimeout(()=>{
+  setTimeout(() => {
     gameBox.classList.add("hidden");
     loveBox.classList.remove("hidden");
     loveBox.classList.add("fade-in");
     startSlideshow();
-  },1000);
+  }, 1000);
 }
 
 /* ===== SLIDESHOW ===== */
-function startSlideshow(){
+function startSlideshow() {
   const slides = document.querySelectorAll("#slideshow img");
-  let i=0;
-  if(slides.length){
+  let i = 0;
+  if (slides.length) {
     slides[0].classList.add("active");
-    setInterval(()=>{
+    setInterval(() => {
       slides[i].classList.remove("active");
-      i=(i+1)%slides.length;
+      i = (i + 1) % slides.length;
       slides[i].classList.add("active");
-    },3500);
+    }, 3500);
   }
 }
 </script>
-
-<style>
-@keyframes fly { to{ transform: translate(300px,-500px); opacity:0;} }
-</style>
-
