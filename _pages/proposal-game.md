@@ -96,7 +96,7 @@ canvas {
   <canvas id="particles"></canvas>
 
   <audio id="music" loop>
-    <source src="{{ '/assets/music/romance.mp3' | relative_url }}" type="audio/mpeg">
+    <source src="{{ '/assets/audio/romance.mp3' | relative_url }}" type="audio/mpeg">
   </audio>
 
   <!-- GAME -->
