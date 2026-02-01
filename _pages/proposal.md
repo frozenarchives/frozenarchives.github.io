@@ -36,7 +36,6 @@ canvas {
   backdrop-filter: blur(10px); /* optional: blur background for better contrast */
 }
 
-
 .hidden { display: none; }
 .fade-in { animation: fadeIn 1.4s ease forwards; }
 .fade-out { animation: fadeOut 1s ease forwards; }
@@ -59,6 +58,7 @@ canvas {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  z-index: 2; /* Ensure buttons are above other elements */
 }
 #yesBtn { background:#ff5d8f; color:white; }
 #noBtn { background:#ccc; }
@@ -154,7 +154,6 @@ const noBtn = document.getElementById("noBtn");
 function moveNo() {
   const container = document.querySelector(".choice-container");
   const containerRect = container.getBoundingClientRect();
-  const btnRect = noBtn.getBoundingClientRect();
 
   // maximum X/Y so the button stays inside the container
   const maxX = container.clientWidth - noBtn.offsetWidth;
@@ -170,7 +169,7 @@ function moveNo() {
 }
 
 noBtn.addEventListener("mouseenter", moveNo); // desktop
-noBtn.addEventListener("touchstart", e=>{ e.preventDefault(); moveNo(); }); // mobile
+noBtn.addEventListener("touchstart", e => { e.preventDefault(); moveNo(); }); // mobile
 
 yesBtn.addEventListener("click", () => {
   choiceBox.classList.add("fade-out");
