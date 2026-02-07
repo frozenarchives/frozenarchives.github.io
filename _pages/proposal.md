@@ -195,6 +195,16 @@ const choiceBox = document.getElementById("choiceBox");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
+function placeNoInitially() {
+  const yesRect = yesBtn.getBoundingClientRect();
+
+  noBtn.style.left = `${yesRect.right + 30}px`;
+  noBtn.style.top = `${yesRect.top}px`;
+}
+
+window.addEventListener("load", placeNoInitially);
+
+
 function moveNo() {
   const padding = 20;
   const btnWidth = noBtn.offsetWidth;
@@ -324,15 +334,56 @@ function finishGame() {
 
 /* ===== SLIDESHOW ===== */
 function startSlideshow() {
-  const slides = document.querySelectorAll("#slideshow img");
+  const slides = Array.from(document.querySelectorAll("#slideshow img"));
   let i = 0;
-  if (slides.length) {
-    slides[0].classList.add("active");
-    setInterval(() => {
-      slides[i].classList.remove("active");
-      i = (i + 1) % slides.length;
-      slides[i].classList.add("active");
+  let interval;
+  let paused = false;
+
+  function show(index) {
+    slides.forEach(s => s.classList.remove("active"));
+    slides[index].classList.add("active");
+  }
+
+  function next() {
+    i = (i + 1) % slides.length;
+    show(i);
+  }
+
+  function prev() {
+    i = (i - 1 + slides.length) % slides.length;
+    show(i);
+  }
+
+  function startAuto() {
+    interval = setInterval(() => {
+      if (!paused) next();
     }, 3500);
   }
+
+  show(0);
+  startAuto();
+
+  // Pause on hover / touch
+  const slideshow = document.getElementById("slideshow");
+
+  slideshow.addEventListener("mouseenter", () => paused = true);
+  slideshow.addEventListener("mouseleave", () => paused = false);
+  slideshow.addEventListener("touchstart", () => paused = true);
+  slideshow.addEventListener("touchend", () => paused = false);
+
+  // Swipe support
+  let startX = 0;
+
+  slideshow.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slideshow.addEventListener("touchend", e => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 40) {
+      diff < 0 ? next() : prev();
+    }
+  });
 }
+
 </script>
