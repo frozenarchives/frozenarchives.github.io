@@ -3,6 +3,7 @@ layout: default
 permalink: /proposal/
 title: Will You Be My Valentine? 💕
 nav: false
+hide_footer: true
 ---
 
 <style>
