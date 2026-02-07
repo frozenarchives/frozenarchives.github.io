@@ -6,7 +6,7 @@ nav: false
 ---
 
 <style>
-/* ===== FORCE REMOVE THEME FOOTER ===== */
+/* ===== REMOVE THEME FOOTER ===== */
 footer,
 .site-footer,
 .page-footer {
@@ -59,47 +59,45 @@ canvas {
 .fade-in { animation: fadeIn 1.4s ease forwards; }
 .fade-out { animation: fadeOut 1s ease forwards; }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes fadeOut {
-  to { opacity: 0; transform: scale(0.97); }
-}
+@keyframes fadeIn { from {opacity:0; transform:scale(0.97);} to{opacity:1; transform:scale(1);} }
+@keyframes fadeOut{ to {opacity:0; transform:scale(0.97);} }
 
-/* --- Buttons --- */
+/* --- Choice Buttons --- */
 .choice-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 30px;
   margin-top: 20px;
+  position: relative;
 }
 
-#yesBtn, #noBtn {
+#yesBtn {
+  background: #ff5d8f;
+  color: white;
   padding: 18px 32px;
   font-size: 20px;
   border-radius: 12px;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease;
-}
-
-#yesBtn {
-  background: #ff5d8f;
-  color: white;
+  position: relative; /* normal flow */
 }
 
 #noBtn {
   background: #ccc;
-  position: fixed;
+  padding: 18px 32px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: absolute; /* move inside the container */
+  top: 0;
+  left: 0;
 }
 
 /* --- Hearts --- */
-.heart {
-  position: absolute;
-  font-size: 32px;
-  cursor: pointer;
-}
+.heart { position: absolute; font-size: 32px; cursor: pointer; }
 
 /* --- Slideshow --- */
 .slideshow {
@@ -123,23 +121,20 @@ canvas {
   transition: opacity 1.5s ease;
 }
 
-.slideshow img.active {
-  opacity: 1;
-}
+.slideshow img.active { opacity: 1; }
 
-@media (max-width: 600px) {
-  .slideshow { height: 250px; }
-}
+@media (max-width:600px) { .slideshow { height: 250px; } }
 </style>
 
 <div class="page">
   <canvas id="particles"></canvas>
 
+  <!-- MUSIC -->
   <audio id="music" loop>
     <source src="{{ '/assets/audio/romance.mp3' | relative_url }}" type="audio/mpeg">
   </audio>
 
-  <!-- Choice -->
+  <!-- Choice Page -->
   <div class="box" id="choiceBox">
     <h1>Will you be my Valentine, Diana? 💖</h1>
     <div class="choice-container">
@@ -148,14 +143,14 @@ canvas {
     </div>
   </div>
 
-  <!-- Game -->
+  <!-- Game Page -->
   <div class="box hidden" id="gameBox">
     <h1>Catch the hearts 💕</h1>
     <p>Tap 5 hearts to unlock your special message</p>
     <div id="counter">0 / 5</div>
   </div>
 
-  <!-- Final -->
+  <!-- Love Message + Slideshow -->
   <div class="box hidden" id="loveBox">
     <h1>You chose us ❤️</h1>
     <div class="slideshow" id="slideshow">
@@ -175,9 +170,9 @@ canvas {
 <script>
 /* ===== MUSIC ===== */
 const music = document.getElementById("music");
-music.play().catch(() =>
-  document.body.addEventListener("click", () => music.play(), { once: true })
-);
+music.play().catch(() => {
+  document.body.addEventListener("click", () => music.play(), { once: true });
+});
 
 /* ===== PARTICLES ===== */
 const canvas = document.getElementById("particles");
@@ -214,57 +209,40 @@ function drawParticles() {
 }
 drawParticles();
 
-/* ===== NO BUTTON DODGE ===== */
+/* ===== CHOICE BUTTON LOGIC ===== */
+const choiceBox = document.getElementById("choiceBox");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-function placeNoInitially() {
-  const yesRect = yesBtn.getBoundingClientRect();
-  // Put No button to the right of Yes button, but within screen
-  let left = yesRect.right + 20;
-  let top = yesRect.top;
 
-  // Ensure it stays within viewport
-  if (left + noBtn.offsetWidth > window.innerWidth) {
-    left = window.innerWidth - noBtn.offsetWidth - 20;
-  }
-  if (top + noBtn.offsetHeight > window.innerHeight) {
-    top = window.innerHeight - noBtn.offsetHeight - 20;
-  }
+// Side-by-side on load
+function placeNoInitially() {
+  const left = yesBtn.offsetLeft + yesBtn.offsetWidth + 20;
+  const top = yesBtn.offsetTop;
+  noBtn.style.left = `${left}px`;
+  noBtn.style.top = `${top}px`;
+}
+window.addEventListener("load", placeNoInitially);
+window.addEventListener("resize", placeNoInitially);
+
+// Move No button only on hover/touch
+function moveNoInsideBox() {
+  const containerWidth = choiceBox.clientWidth;
+  const containerHeight = choiceBox.clientHeight;
+  const maxLeft = containerWidth - noBtn.offsetWidth - 5;
+  const maxTop = containerHeight - noBtn.offsetHeight - 5;
+
+  const left = Math.random() * maxLeft;
+  const top = Math.random() * maxTop;
 
   noBtn.style.left = `${left}px`;
   noBtn.style.top = `${top}px`;
 }
 
-// Run after everything is loaded
-window.addEventListener("load", placeNoInitially);
-window.addEventListener("resize", placeNoInitially);
-
-window.onload = () => {
-  const r = yesBtn.getBoundingClientRect();
-  noBtn.style.left = r.right + 30 + "px";
-  noBtn.style.top = r.top + "px";
-};
-
-function moveNo() {
-  const x = Math.random() * (innerWidth - noBtn.offsetWidth - 20);
-  const y = Math.random() * (innerHeight - noBtn.offsetHeight - 20);
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-}
-
-document.addEventListener("mousemove", e => {
-  const rect = noBtn.getBoundingClientRect();
-  const distance = Math.hypot(
-    e.clientX - (rect.left + rect.width / 2),
-    e.clientY - (rect.top + rect.height / 2)
-  );
-  if (distance < 120) moveNo();
-});
-
+noBtn.addEventListener("mouseenter", moveNoInsideBox);
+noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoInsideBox(); });
 
 /* ===== GAME ===== */
 const gameBox = document.getElementById("gameBox");
-const choiceBox = document.getElementById("choiceBox");
 const counter = document.getElementById("counter");
 let caught = 0;
 
@@ -307,9 +285,8 @@ function startGame() {
   heartInterval = setInterval(spawnHeart, 700);
 }
 
-/* ===== CONFETTI + FINAL ===== */
+/* ===== FINISH GAME ===== */
 const loveBox = document.getElementById("loveBox");
-
 function finishGame() {
   clearInterval(heartInterval);
   gameBox.classList.add("fade-out");
