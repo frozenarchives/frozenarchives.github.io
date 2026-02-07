@@ -12,7 +12,10 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 }
 
 /* --- Page Setup --- */
@@ -73,6 +76,7 @@ canvas {
 #yesBtn:hover { transform: scale(1.1); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
 #noBtn { background: #ccc; }
 #noBtn:hover { transform: scale(1.1); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
+#noBtn { position: fixed;}
 
 /* --- Heart Game --- */
 .heart { position: absolute; font-size: 32px; cursor: pointer; }
@@ -192,22 +196,37 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
 function moveNo() {
-  const maxX = window.innerWidth - noBtn.offsetWidth;
-  const maxY = window.innerHeight - noBtn.offsetHeight;
+  const padding = 20;
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-  const angle = Math.random() * 2 * Math.PI;
+  const maxX = window.innerWidth - btnWidth - padding;
+  const maxY = window.innerHeight - btnHeight - padding;
 
-  const xMovement = Math.cos(angle) * 200;
-  const yMovement = Math.sin(angle) * 200;
+  const x = Math.random() * maxX + padding;
+  const y = Math.random() * maxY + padding;
 
-  noBtn.style.transition = "transform 0.4s ease-in-out";
-  noBtn.style.transform = `translate(${x + xMovement}px, ${y + yMovement}px)`;
+  noBtn.style.transition = "left 0.25s ease, top 0.25s ease";
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
 }
+
 
 noBtn.addEventListener("mouseenter", moveNo); // Desktop
 noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); }); // Mobile
+
+document.addEventListener("mousemove", (e) => {
+  const rect = noBtn.getBoundingClientRect();
+  const distance = Math.hypot(
+    e.clientX - (rect.left + rect.width / 2),
+    e.clientY - (rect.top + rect.height / 2)
+  );
+
+  if (distance < 120) {
+    moveNo();
+  }
+});
+
 
 yesBtn.addEventListener("click", () => {
   choiceBox.classList.add("fade-out");
@@ -298,6 +317,7 @@ function finishGame() {
     gameBox.classList.add("hidden");
     loveBox.classList.remove("hidden");
     loveBox.classList.add("fade-in");
+    document.body.style.overflowY = "auto";
     startSlideshow();
   }, 1000);
 }
