@@ -45,6 +45,27 @@ drawParticles();
 /* ===== NO BUTTON DODGE ===== */
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
+function placeNoInitially() {
+  const yesRect = yesBtn.getBoundingClientRect();
+  // Put No button to the right of Yes button, but within screen
+  let left = yesRect.right + 20;
+  let top = yesRect.top;
+
+  // Ensure it stays within viewport
+  if (left + noBtn.offsetWidth > window.innerWidth) {
+    left = window.innerWidth - noBtn.offsetWidth - 20;
+  }
+  if (top + noBtn.offsetHeight > window.innerHeight) {
+    top = window.innerHeight - noBtn.offsetHeight - 20;
+  }
+
+  noBtn.style.left = `${left}px`;
+  noBtn.style.top = `${top}px`;
+}
+
+// Run after everything is loaded
+window.addEventListener("load", placeNoInitially);
+window.addEventListener("resize", placeNoInitially);
 
 window.onload = () => {
   const r = yesBtn.getBoundingClientRect();
@@ -60,13 +81,14 @@ function moveNo() {
 }
 
 document.addEventListener("mousemove", e => {
-  const r = noBtn.getBoundingClientRect();
-  const d = Math.hypot(
-    e.clientX - (r.left + r.width / 2),
-    e.clientY - (r.top + r.height / 2)
+  const rect = noBtn.getBoundingClientRect();
+  const distance = Math.hypot(
+    e.clientX - (rect.left + rect.width / 2),
+    e.clientY - (rect.top + rect.height / 2)
   );
-  if (d < 120) moveNo();
+  if (distance < 120) moveNo();
 });
+
 
 /* ===== GAME ===== */
 const gameBox = document.getElementById("gameBox");
