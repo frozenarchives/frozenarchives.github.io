@@ -113,7 +113,7 @@ limit: 3
 <h3>About Me</h3>
 
 <p>
-Hey there! I'm a PhD candidate studying the dynamics of the Antarctic
+👋 Hey there! I'm a PhD candidate studying the dynamics of the Antarctic
 Ice Sheets over the past 1.4 million years using Ice-Rafted Debris (IRD)
 from deep-sea sediment cores. I combine machine learning, radiogenic
 isotopic analysis, and iceberg trajectory modeling to investigate how
