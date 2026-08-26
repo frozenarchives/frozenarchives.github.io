@@ -49,7 +49,7 @@ Outside the lab, I am always down for food adventures and the occasional dive in
 
 <!--- #Will remove after the expedition
 
-  Here are some illustrations related with my current work:
+  Here are some illustrations related to my current work:
 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 1em;">
   <div style="text-align: center;">
     <img src="/assets/img/383_04.png" alt="IODP Expedition 383 Sitemap" width="300" height="200">
