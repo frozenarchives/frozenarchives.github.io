@@ -1,13 +1,12 @@
 {
   "basics": {
     "name": "Pranaykumar Tirpude",
-    "label": "PhD Candidate in Earth Sciences",
     "image": "IMG_3243.png",
     "email": "pranaykt@udel.edu",
     "url": "https://www.udel.edu/academics/colleges/ceoe/departments/es/",
-    "summary": "PhD candidate at the University of Delaware studying Antarctic Ice Sheet dynamics through high-resolution IRD records, with a focus on AI/ML, paleoclimate/paleoceanography , and geochemistry.",
+    "summary": "PhD candidate at the University of Delaware studying Antarctic Ice Sheet dynamics using high-resolution IRD records from the Southern Ocean, with a focus on machine learning, ice sheet and iceberg trajectory modeling, and radiogenic isotope geochemistry.",
     "location": {
-      "address": "PNY 109, 225 Academy St",
+      "address": "PNY 103, 225 Academy St",
       "postalCode": "19716",
       "city": "Newark",
       "countryCode": "US",
