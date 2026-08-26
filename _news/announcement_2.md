@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "🌊 Expedition Alert: Heading to the Labrador Sea!"
-date: 2025-05-20 16:11:00-0400
+date: 2026-07-01
 inline: True
 related_posts: false
-map: true
+map: False
 ---
- Awarded GSA Graduate Student Research Grant
+Received Geological Society of America-Graduate Student Research Grant to support IRD radiogenic isotope analysis 
