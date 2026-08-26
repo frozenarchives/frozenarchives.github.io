@@ -33,7 +33,10 @@ ninja.data = [{
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/announcement_1/";
-            },},{
+            },},{id: "news-awarded-gsa-graduate-student-research-grant",
+          title: 'Awarded GSA Graduate Student Research Grant',
+          description: "",
+          section: "News",},{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
