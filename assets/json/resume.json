@@ -5,20 +5,8 @@
     "email": "pranaykt@udel.edu",
     "url": "https://www.udel.edu/academics/colleges/ceoe/departments/es/",
     "summary": "PhD candidate at the University of Delaware studying Antarctic Ice Sheet dynamics using high-resolution IRD records from the Southern Ocean, with a focus on machine learning, ice sheet and iceberg trajectory modeling, and radiogenic isotope geochemistry.",
-    "location": {
-      "address": "PNY 103, 225 Academy St",
-      "postalCode": "19716",
-      "city": "Newark",
-      "countryCode": "US",
-      "region": "Delaware"
-    },
-    "profiles": [
-      {
-        "network": "LinkedIn",
-        "username": "pranaykumar-tirpude",
-        "url": "https://www.linkedin.com/in/pranaykumar-tirpude-617704ab"
-      }
-    ]
+    "address": "PNY 103, 225 Academy St, Newark,DE 19716",
+
   },
   "work": [
     {
@@ -27,10 +15,11 @@
       "url": "https://www.udel.edu/academics/colleges/ceoe/departments/es/",
       "startDate": "2023",
       "endDate": "",
-      "summary": "Researching Antarctic Ice Sheet Dynamics using high-resolution IRD records.",
+      "summary": "Antarctic Ice Sheet Dynamics using high-resolution IRD records.",
       "highlights": [
-        "",
-        ""
+        "Deep learning based instance segmentation of IRD off sediment core X-ray scans",
+        "Ice sheet and Iceberg Trajectory modeling using Community Ice Sheet Model (CISM) output",
+        "Provenance studies using Sr,Nd and Pb isotopes on IRD grains"
       ]
     },
     {
