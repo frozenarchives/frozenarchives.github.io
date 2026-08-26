@@ -31,18 +31,19 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-👋 Hello there! I'm a PhD candidate studying Antarctic Ice Sheets dynamics over the past 1.4 million years using Ice-Rafted Debris (IRD) from deep-sea sediment cores. I use a combination of machine learning, radiogenic isotopes, and iceberg trajectory modeling to understand past Antarctic ice-sheet behavior.
+👋 Hello there! 
+My name is Pranay, and I am a PhD candidate at the Department of Earth Sciences, University of Delaware. My doctoral research focuses on studying the dynamics of Antarctic Ice Sheets during the Late Pleistocene glacial cycles specifically during the Mid-Pleistocene Transition (aka MPT, 0.7 to 1.2 Ma) when Earth's glacial pacing transitioned from small, ephemeral glaciers occurring every 41,000 years to massive ice sheets occurring every 100,000 years. I use marine sediments known as Ice-Rafted Debris (IRD) which are sediments eroded by and trapped inside glaciers as they expand and retreat and transported to the ocean by icebergs. Since this whole process is directly linked to the iceberg calving and ice sheet dynamics, IRD can be used to study past ice sheet conditions and behavior. I use a combination of machine learning, radiogenic isotope geochemistry, and ice sheet and iceberg trajectory modeling to understand past Antarctic ice-sheet dynamics.
 
-I'm particularly interested in:
-* IRD flux variability across the Mid-Pleistocene Transition (MPT)
-* Provenance studies using Sr, Nd, and Pb isotopes
-* Reconstructing ice sheet conditions and iceberg trajectories using Community Earth System Model outputs to better understand past ice sheet and ocean circulation patterns
+I am particularly interested in:
+* IRD flux variability across the Mid-Pleistocene Transition.
+* Provenance studies using Sr, Nd, and Pb isotopes in IRD grains.
+* Reconstructing ice sheet conditions and iceberg trajectories using Community Earth System Model outputs to better understand past Antarctic ice sheet behavior and ocean circulation patterns.
 
-My samples come from IODP Expedition 383 – [Dynamics of the Pacific Antarctic Circumpolar Current (DYNAPACC)](http://publications.iodp.org/proceedings/383/383title.html), an international research cruise that targeted sediment cores across the Central South Pacific sector of the Southern Ocean to investigate the role of the Antarctic Circumpolar Current (ACC) in global climate evolution. The expedition recovered high-resolution sediment cores that are ideal for reconstructing past atmosphere-ocean dynamics of ACC and Antarctic ice sheet dynamics across key climate transitions such as the MPT.
+My samples come from International Ocean Discovery Program (IODP) Expedition 383 – [Dynamics of the Pacific Antarctic Circumpolar Current (DYNAPACC)](http://publications.iodp.org/proceedings/383/383title.html), an international research cruise that targeted sediment cores across the Central South Pacific sector of the Southern Ocean to investigate the role of the Antarctic Circumpolar Current (ACC) in global climate evolution. The expedition recovered high-resolution sediment cores that are ideal for reconstructing past atmosphere-ocean dynamics of ACC and Antarctic ice sheet dynamics across key climate transitions such as the MPT.
 
-You can usually find me coding in Python (mostly in Jupyter Lab), working with deep-sea sediment cores, or building visualizations of the Southern Ocean and Antarctica.
+You can usually find me coding in Python (mostly in Jupyter Lab), working with deep-sea sediment cores in the lab, or building visualizations of the Southern Ocean and Antarctica.
 
-Outside the lab, I'm always down for food adventures and the occasional dive into a good brewery.
+Outside the lab, I am always down for food adventures and the occasional dive into a good brewery.
 
 📍 Currently based at [University of Delaware](https://www.udel.edu/academics/colleges/ceoe/departments/es/)
 
