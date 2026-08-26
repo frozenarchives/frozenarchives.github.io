@@ -33,8 +33,11 @@ ninja.data = [{
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/announcement_1/";
-            },},{id: "news-awarded-gsa-graduate-student-research-grant",
-          title: 'Awarded GSA Graduate Student Research Grant',
+            },},{id: "news-received-ud-climatehub-lundgaard-award-to-support-research-visit-to-nsf-ncar-in-boulder-co",
+          title: 'Received UD ClimateHub Lundgaard Award to support research visit to NSF NCAR in...',
+          description: "",
+          section: "News",},{id: "news-received-geological-society-of-america-graduate-student-research-grant-to-support-ird-radiogenic-isotope-analysis",
+          title: 'Received Geological Society of America-Graduate Student Research Grant to support IRD radiogenic isotope...',
           description: "",
           section: "News",},{
         id: 'social-email',
