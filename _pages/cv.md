@@ -5,7 +5,7 @@ permalink: /cv/
 title: cv
 nav: true
 nav_order: 5
-cv_pdf: Pranay_CV24.pdf # you can also use external links here
+cv_pdf: CV26_Pranay.pdf # you can also use external links here
 description: 
 toc:
   sidebar: left
