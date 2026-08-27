@@ -4,130 +4,221 @@
     - name: Full Name
       value: Pranaykumar Tirpude
     - name: Address
-      value: PNY 109, 225 Academy St, Newark, DE 19716
+      value: 255 Academy St, Newark, DE 19716
     - name: Email
       value: pranaykt@udel.edu
+    - name: Website
+      value: frozenarchives.github.io
     - name: Languages
       value: English, Hindi, Marathi
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Paleoclimate and Paleoceanography
+    - title: Antarctic Ice Sheet Dynamics and Paleoclimate
       items:
         - Antarctic Ice Sheet dynamics
-        - High-resolution Ice-Rafted Debris studies
-    - title: Machine Learning and Data Science in Earth Sciences
-      items:
-        - AI/ML for Earth Science
-        - Sediment core X-ray image analysis
+        - Pleistocene climate variability
+        - High-resolution Ice-Rafted Debris (IRD) records
         - Iceberg trajectory modeling
+    - title: Machine Learning and Data Science
+      items:
+        - Machine learning applications in Earth sciences
+        - Deep learning-based IRD detection
+        - Sediment core X-ray image analysis
+        - Time-series analysis
     - title: Isotope Geochemistry
       items:
-        - Column chemistry for Radiogenic isotopes
-        - Strontium, Neodymium, and Lead isotopes
+        - Radiogenic isotope geochemistry
+        - Strontium (Sr), Neodymium (Nd), and Lead (Pb) isotopes
+        - Boron isotope geochemistry
+        - Foraminiferal geochemistry
 
 - title: Education
   type: time_table
   contents:
     - title: PhD in Earth Sciences
       institution: University of Delaware, Newark, DE, USA
-      year: 2023 - Present
+      year: Aug 2023 - Present
       description:
-        - Project: Antarctic Ice Sheet Dynamics across the Mid-Pleistocene Transition through High-Resolution IRD Records
-        - Advisor: Dr. Chandranath Basak
+        - "Advisor: Dr. Chandranath Basak"
+        - "Dissertation: Antarctic Ice Sheet Dynamics across the Mid-Pleistocene Transition Through High-Resolution Ice-Rafted Debris Records"
     - title: MSc in Geology
       institution: Banaras Hindu University, Varanasi, India
       year: 2019 - 2021
       description:
-        - Thesis: AI/ML-Based Sea Surface Temperature Estimation Using Planktic Foraminiferal Assemblage from IODP Site U1457
-        - Advisor: Prof. Arun Deo Singh
+        - "Advisor: Prof. Arun Deo Singh"
+        - "Thesis: AI/ML-Based Sea Surface Temperature Estimation Using Planktic Foraminiferal Assemblage from IODP Site U1457"
     - title: BSc in Geology
       institution: Fergusson College, Pune, India
       year: 2016 - 2019
 
-- title: Experience
+- title: Research Experience
   type: time_table
   contents:
-    - title: Doctoral research
-      institution: University of Delaware
+    - title: PhD Candidate
+      institution: University of Delaware, Department of Earth Sciences
       year: 2023 - Present
       description:
-        - Researching Antarctic Ice Sheet Dynamics through IRD records
-        - Applying machine learning techniques to X-ray images of sediment cores
-        - Radiogenic isotope analysis (Sr, Nd, Pb)
+        - "Project: Antarctic Ice Sheet Dynamics across the Mid-Pleistocene Transition through high-resolution IRD records"
+        - Deep learning-based instance segmentation of IRD from sediment core X-ray scans
+        - Time-series analysis of IRD flux spanning approximately 1.4 million years
+        - Development of ice sheet and iceberg trajectory models
+        - Antarctic IRD provenance studies using Sr, Nd, and Pb isotopes
+
+    - title: Summer Visitor
+      institution: NSF National Center for Atmospheric Research (NCAR), Boulder, CO
+      year: Jun 2026 - Jul 2026
+      description:
+        - "Project: Linking Southern Ocean Ice-Rafted Debris Flux with Antarctic Ice Sheet Dynamics"
+        - Simulated Antarctic ice sheet calving rates for modern and past climates using the Community Ice Sheet Model (CISM)
+        - Generated iceberg size distributions from simulated CISM calving rates
+        - Developed iceberg trajectory modeling including breakup of giant icebergs and meltwater distribution
+        - Validated model outputs using radiogenic isotopic analyses of IRD grains
+
     - title: Junior Research Fellow
-      institution: Indian Institute of Science (IISc), Bangalore
+      institution: Indian Institute of Science, Bangalore, India
       year: 2021 - 2023
       description:
-        - Project: Reconstruction of atmospheric CO₂ using boron isotope ratios in foraminifera
-        - Identification and picking of planktic and benthic Foraminifers
-        - Carbonate sample processing in class 100 clean lab
-        - Operating ICP-OES and QQQ-ICP-MS
+        - "Project: Reconstruction of atmospheric CO₂ using Boron isotope ratios in marine carbonates"
+        - Species-level identification of foraminifera
+        - Chemical cleaning and sample processing in a Class-100 clean laboratory
+        - ICP-OES and triple quadrupole ICP-MS analysis
+
     - title: M.Sc. Research Student
-      institution: Banaras Hindu University
+      institution: Banaras Hindu University, Varanasi, India
       year: 2019 - 2021
       description:
-        - AI-driven SST reconstruction using census counts of Foraminifera and machine learning models such as ANN, SVM, AdaBoost, RFA
-        - Tools: Python, C++, BASH, SLURM, PyFERRET, GMT, ODV, SeasDAS
+        - Sea surface temperature estimation using planktic foraminiferal assemblages and machine learning
+        - Applied ANN, SVM, AdaBoost, Random Forest, and other machine learning techniques
+        - Coding in Python, C++, BASH, and SLURM
+        - Experience with PyFERRET, PyGMT, SeaDAS, and Ocean Data View (ODV)
+
+- title: Seagoing Experience
+  type: time_table
+  contents:
+    - title: SEALS 2025 - Sediment Exchange Along the Labrador Sea
+      institution: R/V Roger Revelle
+      year: Jun - Jul 2025
+      description:
+        - Participated in a seagoing research expedition with 29 scientists from 12 institutions
+        - Conducted seawater sampling using a CTD rosette
+        - Assisted with multi-corer and gravity coring
+        - Conducted porewater sampling and alkalinity titration
 
 - title: Teaching Experience
   type: time_table
   contents:
-    - title: Graduate Teaching Assistant
+    - title: Teaching Assistant
       institution: University of Delaware
-      year: 2023, 2024, 2025
+      year: Fall 2023 - Spring 2024
       description:
         - GEOL107 - Geology of Dynamic Earth
         - GEOL113 - Earth Science
         - GEOL115 - Geological Hazards
-        - GEOL110 - Earth's Evolving Systems
+        - Assisted students with hands-on laboratory activities, assignments, and course concepts
 
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 2019
+    - year: Jul 2026
       items:
-        - ONGC Scholarship for meritorious geoscience students
-    - year: 2018
+        - Geological Society of America Graduate Student Research Grant - Research grant for radiogenic isotope analysis of whole-rock Antarctic IRD grains
+    - year: Apr 2026
       items:
-        - INSA Summer Research Fellowship (by Indian National Science Academy and others)
+        - Climate Hub - Lundgaard Award, University of Delaware - Support for research visit to NSF NCAR
+    - year: Mar 2026
+      items:
+        - Geological Society of America Travel Grant - Support for attendance at the GSA Northeastern Section Meeting
+    - year: Dec 2019
+      items:
+        - ONGC Scholarship for meritorious students in geosciences
+    - year: Jun 2018
+      items:
+        - INSA Summer Research Fellowship - Jointly awarded by INSA, IAS, and NASI
 
-- title: Conferences, Workshops, and Internships
+- title: Conferences and Workshops
   type: nested_list
   contents:
-    - title: Conferences
+    - title: Oral Presentations
       items:
-        - AGU 2024: Oral presentation on Antarctic Ice Sheet Dynamics using high-resolution IRD records
-    - title: Workshops
+        - "2026 - Linking Southern Ocean Ice-Rafted Debris Flux to Antarctic Ice Sheet Dynamics, Community Earth System Model (CESM) Workshop, NSF NCAR, Boulder, CO"
+        - "2024 - Understanding the Antarctic Ice Sheet Dynamics Through High-Resolution IRD Records Using AI/ML Models, American Geophysical Union Annual Meeting, Washington, DC"
+    - title: Poster Presentation
       items:
-        - PyRATES & LinkedEarth workshop at USC: Python/R for time series analysis and FAIR publishing (2024)
-    - title: Internships
+        - "2026 - Can an ice-distal IODP site capture signals of West Antarctic Ice Sheet Dynamics across the Mid-Pleistocene Transition? Insights from the South Pacific, Geological Society of America Northeastern Section Meeting, Hartford, CT"
+    - title: Workshop
       items:
-        - University of Delhi (2018): Micropaleontological investigation of Deccan Intertrappean beds
-        - Atomic Minerals Directorate for Exploration and Research (2019): Radiometric survey and mapping across Singhbhum Shear Zone
+        - "2024 - Python and R Analysis of Time Series and FAIR Science Publishing, PyRATES/LinkedEarth, USC Information Sciences Institute"
+
+- title: Internships and Research Fellowships
+  type: nested_list
+  contents:
+    - title: Summer Research Fellowship
+      items:
+        - "2018 - Micropaleontological investigation of Deccan Intertrappean beds, University of Delhi"
+    - title: Winter Internship
+      items:
+        - "2019 - Lithostructural mapping and radiometric survey in uranium mineralized zones of eastern India, Atomic Minerals Directorate, Department of Atomic Energy, Government of India"
 
 - title: Outreach Activities
   type: time_table
   contents:
     - title: Coast Day
       institution: University of Delaware
-      year: 2023, 2024
+      year: Oct 2023, 2024
       description:
-        - Demonstrated IODP drilling and paleoclimate research to the public
-    - title: Open Day
+        - Demonstrated the significance of scientific ocean drilling and paleoclimate studies to approximately 200 participants
+    - title: IISc Open Day
       institution: Indian Institute of Science
-      year: 2023
+      year: Feb 2023
       description:
-        - Outreach on marine microfossils and paleoclimate studies
+        - Demonstrated the role of microfossils in paleoclimate research to students and the general public
+
+- title: Technical Skills
+  type: nested_list
+  contents:
+    - title: Programming and Computing
+      items:
+        - Python
+        - C++
+        - BASH
+        - SLURM
+        - Linux
+        - Windows
+        - MacOS
+    - title: Machine Learning
+      items:
+        - Artificial Neural Networks (ANN)
+        - Support Vector Machines (SVM)
+        - AdaBoost
+        - Random Forest
+        - Deep Learning
+        - Image segmentation
+    - title: Scientific Visualization and Analysis
+      items:
+        - PyFERRET
+        - PyGMT
+        - SeaDAS
+        - Ocean Data View (ODV)
+    - title: Analytical Geochemistry
+      items:
+        - ICP-OES
+        - Triple quadrupole ICP-MS
+        - Radiogenic isotope analysis
+        - Clean laboratory sample processing
 
 - title: Memberships
   type: list
   contents:
-    - American Geophysical Union
-    - Geological Society of America
+    - American Geophysical Union (AGU)
+    - Geological Society of America (GSA)
 
 - title: Other Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Hiking, Photography, Teaching Science, Data Visualization
+    - Paleoclimate and Paleoceanography
+    - Antarctic Ice Sheet Dynamics
+    - Iceberg Trajectory Modeling
+    - Machine Learning in Earth Sciences
+    - Isotope Geochemistry
